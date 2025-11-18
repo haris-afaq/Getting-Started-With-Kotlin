@@ -1,5 +1,7 @@
 package org.example
 
+import java.sql.Types
+
 fun main() {
     //Creating object of the class
     val student: Student = Student()
@@ -23,6 +25,12 @@ fun main() {
     // Object of Constructor with init block
 
     val bike : Bike =Bike(model = "ninja h2r")
+
+
+    // Inheritance
+
+    val childHouse: ChildHouse =ChildHouse(types = "Modern")
+    childHouse.displayInfo()
 
 
 }
@@ -70,4 +78,48 @@ class Bike(var model: String){
         formattedBikeModel= model.uppercase()
         println(formattedBikeModel)
     }
+}
+
+
+
+// Inheritence in Kotlin, es mae ham ne jis class ko inherit karna huta hai oske saath ham open keyword use karte hai
+
+
+open class GrandFatherHouse{
+    var rooms=1
+    var material = "Mud"
+
+
+    open fun displayInfo(){
+        println("Grand Father House: Rooms: $rooms, Material: $material")
+    }
+}
+
+// Yaha pe ham ne GrandFather Class ko extend karna hai tu jis tarah ham flutter mae extend keyword use karte hai yaha pe ham : use karte hai
+
+open class Father: GrandFatherHouse(){
+
+    init {
+        rooms=3
+        material="Concreate"
+    }
+    // yaha pe ham override use karengy
+
+    override open fun displayInfo() {
+        super.displayInfo()
+
+        println("Father House: Rooms: $rooms, Material: $material")
+    }
+}
+
+class ChildHouse(val types: String): Father(){
+    var type: String= types
+    init {
+        rooms=5
+    }
+    override fun displayInfo() {
+        super.displayInfo()
+        println("Child House: Rooms: $rooms, Type: $type")
+    }
+
 }
