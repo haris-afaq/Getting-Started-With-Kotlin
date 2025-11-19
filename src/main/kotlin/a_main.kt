@@ -1,7 +1,5 @@
 package org.example
 
-import java.sql.Types
-
 fun main() {
     //Creating object of the class
     val student: Student = Student()
@@ -123,3 +121,5 @@ class ChildHouse(val types: String): Father(){
     }
 
 }
+
+
